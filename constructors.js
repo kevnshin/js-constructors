@@ -15,6 +15,10 @@ function Spell (name,cost,description) {
    this.cost = cost;
    this.description = description;
 
+   this.printDetails = function(){
+         console.log("Name: "+this.name+"\nCost: "+this.cost+"\nDescription: "+this.description);
+      };
+
 }
 
 
@@ -25,11 +29,11 @@ function Spell (name,cost,description) {
    */
 
 //Adds the printDetails method to Spell which allows it to be inherited
-Spell.prototype.printDetails = function(){
+/*Spell.prototype.printDetails = function(){
 
    console.log("Name: "+this.name+"\nCost: "+this.cost+"\nDescription: "+this.description);
 
-};
+};*/
 
 
 /**
