@@ -120,17 +120,13 @@ DamageSpell.prototype = new Spell();
 
       this.health-=damage;
 
-
-         if(this.health===0){
-
-            this.isAlive = false;
-
-         }
-
-
       } 
    
+      if(this.health===0){
 
+         this.isAlive = false;
+
+      }
 
 
    };
@@ -144,6 +140,25 @@ DamageSpell.prototype = new Spell();
    * @param  {number} cost      The amount of mana to spend.
    * @return {boolean} success  Whether mana was successfully spent.
    */
+   this.spendMana = function(cost){
+
+      //if spell's cost is more t
+      if(cost>this.mana){
+         return false;
+      }
+
+      else{
+
+         this.mana-=cost;
+
+         return true;
+
+      } 
+
+
+   };
+
+
 
   /**
    * Allows the spellcaster to cast spells.
