@@ -24,6 +24,7 @@ function Spell (name,cost,description) {
    * @name printDetails
    */
 
+//Adds the printDetails method to Spell which allows it to be inherited
 Spell.prototype.printDetails = function(){
 
    console.log("Name: "+this.name+"\nCost: "+this.cost+"\nDescription: "+this.description);
@@ -55,6 +56,20 @@ Spell.prototype.printDetails = function(){
  * @property {number} damage
  * @property {string} description
  */
+
+function DamageSpell(name,cost,damage,description){
+
+   //Assigns this spell's name, cost and description using the Spell constructor
+   Spell.call(this,name,cost,description);
+   this.damage = damage;
+
+}
+
+//The DamageSpell prototype will inherit methods and props from the Spell constructor
+DamageSpell.prototype = new Spell();
+
+
+
 
 /**
  * Now that you've created some spells, let's create
