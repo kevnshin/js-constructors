@@ -142,7 +142,7 @@ DamageSpell.prototype = new Spell();
    */
    this.spendMana = function(cost){
 
-      //if spell's cost is more t
+      //if spell's cost is more than current amount of mana, don't cast spell
       if(cost>this.mana){
          return false;
       }
@@ -150,14 +150,12 @@ DamageSpell.prototype = new Spell();
       else{
 
          this.mana-=cost;
-
          return true;
 
       } 
 
 
    };
-
 
 
   /**
@@ -185,6 +183,23 @@ DamageSpell.prototype = new Spell();
    * @param  {Spellcaster} target         The spell target to be inflicted.
    * @return {boolean}                    Whether the spell was successfully cast.
    */
+
+
+   this.invoke = function(spell,target){
+
+      if(spell instanceof Spell||spell instanceof DamageSpell){
+
+
+      
+      }
+
+      else{
+
+         return false;
+
+      }
+
+   };
 
 
 }
