@@ -140,27 +140,18 @@ DamageSpell.prototype = new Spell();
    */
    this.spendMana = function(cost){
 
-      //if spell's cost is more than current amount of mana, don't cast spell
-      if(cost>this.mana){
-         return false;
-      }
-
-      else{
-
-         this.mana-=cost;
-         return true;
-
-      } 
-
-/*
       var hasEnoughMana = (cost<=this.mana);
+
+      //if there's enough mana
       if(hasEnoughMana){
-         this.mana=-cost;
+
+         //decrease mana by cost
+         this.mana-=cost;
       }
 
       return hasEnoughMana;
 
-*/
+
    };
 
 
@@ -210,8 +201,8 @@ DamageSpell.prototype = new Spell();
                target.inflictDamage(spell.damage);
             }
 
-
             return true;
+         
          }else{//not enough mana
             return false;
          }
