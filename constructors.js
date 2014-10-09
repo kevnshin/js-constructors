@@ -197,17 +197,24 @@ DamageSpell.prototype = new Spell();
 
          //if first param is DamageSpell and second param has to be Spellcaster
          if(spell instanceof DamageSpell && !(target instanceof Spellcaster)){
+         // only true if spell is a DamageSpell and target is not a Spell caster
 
             return false;
          }
 
-         if(spell instanceof DamageSpell){
-
-            target.inflictDamage(spell.damage);
-         }
-         
          //return if spell has been cast
-         return (this.spendMana(spell.cost));
+         if(this.spendMana(spell.cost)){
+
+            if(spell instanceof DamageSpell){
+
+               target.inflictDamage(spell.damage);
+            }
+
+
+            return true;
+         }else{//not enough mana
+            return false;
+         }
 
 
       }
