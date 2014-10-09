@@ -73,7 +73,11 @@ function DamageSpell(name,cost,damage,description){
 }
 
 //The DamageSpell prototype will inherit methods and props from the Spell constructor
-DamageSpell.prototype = new Spell();
+DamageSpell.prototype = Object.create(Spell.prototype,{
+  constructor: {
+    value: DamageSpell //This makes it so DamageSpell isn't overwritten with new prototype, just added to
+  }
+});
 
 
 
