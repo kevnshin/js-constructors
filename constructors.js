@@ -189,8 +189,29 @@ DamageSpell.prototype = new Spell();
 
       if(spell instanceof Spell||spell instanceof DamageSpell){
 
+         //
+         if(spell instanceof DamageSpell && !(target instanceof Spellcaster)){
 
-      
+            return false;
+         }
+
+         if(this.spendMana(Spell.cost)){
+            return true;
+
+         }
+
+         else{
+            return false;
+         }
+
+
+
+
+
+
+
+
+         return true;
       }
 
       else{
