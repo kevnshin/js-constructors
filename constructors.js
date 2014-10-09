@@ -114,14 +114,12 @@ DamageSpell.prototype = new Spell();
       //if health will be negative, set it equal to 0
       if(damage>this.health){
          this.health = 0;
-      }
-
-      else{
+      }else{//damage less than total health -> inflict damage
 
       this.health-=damage;
-
       } 
    
+      //die if no health
       if(this.health===0){
 
          this.isAlive = false;
@@ -154,7 +152,15 @@ DamageSpell.prototype = new Spell();
 
       } 
 
+/*
+      var hasEnoughMana = (cost<=this.mana);
+      if(hasEnoughMana){
+         this.mana=-cost;
+      }
 
+      return hasEnoughMana;
+
+*/
    };
 
 
@@ -189,29 +195,21 @@ DamageSpell.prototype = new Spell();
 
       if(spell instanceof Spell||spell instanceof DamageSpell){
 
-         //
+         //if first param is DamageSpell and second param has to be Spellcaster
          if(spell instanceof DamageSpell && !(target instanceof Spellcaster)){
 
             return false;
          }
 
-         if(this.spendMana(Spell.cost)){
-            return true;
+         if(spell instanceof DamageSpell){
 
+            target.inflictDamage(spell.damage);
          }
-
-         else{
-            return false;
-         }
-
+         
+         //return if spell has been cast
+         return (this.spendMana(spell.cost));
 
 
-
-
-
-
-
-         return true;
       }
 
       else{
